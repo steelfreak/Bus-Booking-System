@@ -1,0 +1,86 @@
+<!-- templates/booking/filtered_bookings.html -->
+{% extends 'base.html' %}
+
+{% block title %}Filter Booked Seats{% endblock %}
+
+{% block content %}
+
+{% load widget_tweaks %}
+
+<div class="mb-5">
+    <h1>Filter Booked Seats</h1>
+    <form method="get">
+        {% csrf_token %}
+
+
+        <div>
+            <div class="form-floating">
+                {{ form.date|attr:"placeholder:Choose Date " | attr:"class:form-control id:dateInput" }}          
+              <label for="dateInput">.</label>
+            </div>
+            <div class="form-floating pt-3">
+                {{ form.departure_time|attr:"placeholder:Departure Time" | attr:"class:form-control id:time" }}          
+              <label for="time">Departure Time</label>
+            </div>
+
+            <div class="form-floating pt-3">
+                {{ form.destination|attr:"placeholder:Destination Route" | attr:"class:form-control id:textInput" }}          
+              <label for="textInput">Destination Route</label>
+            </div>
+            <div class="form-floating pt-3">
+                {{ form.number_plate|attr:"placeholder:Number Plate" | attr:"class:form-control id:textInput" }}          
+              <label for="textInput">Number Plate</label>
+            </div>
+           
+        </div>
+        <!-- {{ form.as_p }} -->
+
+
+        <div class="pt-5 mb-5">
+          <button class="w-100 btn btn-lg btn-primary" type="submit">
+          Filter
+          </button>
+        </div>
+
+    </form>
+
+    {% if bookings %}
+        <h2>Filtered Bookings</h2>
+        <div class="table-responsive">
+        <table class="table" border="1">
+            <thead>
+                <tr>
+                    <th>Dept. Time</th>
+                    <th>Route</th>
+                    <th>Plate N0.</th>
+                    <th>Seat N0.</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.departure_time }}</td>
+                    <td>{{ booking.destination }}</td>
+                    <td>{{ booking.number_plate }}</td>
+                    <td>{{ booking.seat_number }}</td>
+                    
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">No bookings found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    {% else %}
+        <p>No bookings to display.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+
+
+
+
+

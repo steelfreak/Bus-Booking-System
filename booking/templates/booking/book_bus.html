@@ -1,0 +1,51 @@
+<!-- templates/booking/book_bus.html -->
+{% extends 'base.html' %}
+
+{% block title %}Booking Portal{% endblock %}
+
+{% block content %}
+
+{% load widget_tweaks %}
+
+
+<div class="form-signin pt-5">
+    <h1 class="text-center">Book Bus to {{ bus.destination }}</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="pt-5">
+            <div class="form-floating pt-3">
+                {{ form.passenger|attr:"placeholder:passenger" | attr:"class:form-control id:textInput" }}          
+              <label for="textInput">passenger</label>
+            </div>
+
+            <div class="form-floating pt-3">
+                {{ form.seat_number|attr:"placeholder:Seat Number" | attr:"class:form-control id:textInput" }}          
+              <label for="textInput">Seat Number</label>
+            </div>
+        </div>
+        <!-- {{ form.as_p }} -->
+        {% if form.errors %}
+            <div style="color: red;">
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        
+        <div class="pt-5 mb-5">
+          <button value="Book" class="w-100 btn btn-lg btn-primary" type="submit">
+          Book
+        </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

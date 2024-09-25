@@ -1,0 +1,31 @@
+<!-- templates/booking/book_bus.html -->
+{% extends 'base.html' %}
+
+{% block title %}Booking Portal{% endblock %}
+
+{% block content %}
+<h1>Booking Portal</h1>
+<div>
+    <h1>Buses</h1>
+    <div class="container mb-5">
+        <div class="row gx-3 gy-4">
+            {% for bus in buses %}
+            <div class="card col-md-3 col-sm-6 col-xs-12 mx-2 mb-2 "  >
+              <div class="card-body">
+                <h5 class="card-title">{{ bus.destination }}</h5>
+                <p class="card-text">{{ bus.date }}   ***   {{ bus.departure_time }}  </p>        
+                <p class="card-text">{{ bus.price }}   ***   {{ bus.number_plate }}</p>
+                <a href="{% url 'book_bus' bus.id %}" class="btn btn-primary" data-mdb-ripple-init>Book</a>
+              </div>
+            </div>
+
+            {% endfor %} 
+            
+        </div>       
+    </div>
+
+    
+    
+</div>
+{% endblock %}
+

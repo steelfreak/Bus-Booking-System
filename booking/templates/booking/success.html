@@ -1,0 +1,31 @@
+<!-- templates/booking/success.html -->
+{% extends 'base.html' %}
+
+{% block title %}Transaction Successful{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Transaction Successful!</h1>
+    <p>Your booking has been successfully processed. You can download your receipt using the link below:</p>
+
+    <div class="pt-5 mb-5">
+    	<a href="{{ pdf_url }}" target="_blank" class="w-100 btn btn-lg btn-primary">Download Receipt</a>          
+     </div>
+    <!-- <p><a href="{{ pdf_url }}" target="_blank">Download Receipt</a></p> -->
+</div>
+{% endblock %}
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction Successful</title>
+</head>
+<body>
+    <h1>Transaction Successful!</h1>
+    <p>Your booking has been successfully processed. You can download your receipt using the link below:</p>
+    <p><a href="{{ pdf_url }}" target="_blank">Download Receipt</a></p>
+</body>
+</html>
+ -->
