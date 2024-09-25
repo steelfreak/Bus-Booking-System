@@ -1,0 +1,36 @@
+<!-- accounts/templates/accounts/login.html -->
+{% extends 'base.html' %}
+
+{% block title %}Signin{% endblock %}
+
+{% block content %}
+
+<div class="form-signin">
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-floating">
+          <input type="text" name="username" autocomplete="username" class="form-control" id="floatingInput" placeholder="Username" required>
+          <label for="floatingInput">Username:</label>
+        </div>
+
+        <div class="form-floating pt-3">
+          <input type="password" name="password" autocomplete="current-password" class="form-control" id="floatingPassword" placeholder="Password" required >
+          <label for="floatingPassword">Password</label>
+        </div>
+
+
+        <div class="pt-5">
+          <button class="w-100 btn btn-lg btn-primary" type="submit">
+          Sign in 
+          </button>
+        </div>
+        
+        <p class="mt-5 mb-3 text-muted">&copy; 2024  For Any Query: 0786754567 </p>
+    </form>
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,122 @@
+<!-- accounts/templates/accounts/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Twisty{% endblock %}
+
+{% block content %}
+
+{% load widget_tweaks %}
+
+<div class="container pt-5">
+    <h2 class="text-center">Welcome to Twisty</h2>
+    <div class="card pt-5">
+        <div class="card-body ">
+            <div class="card bg-dark text-white">
+                <div class="card-body text-center">
+                    Phone Number: {{ profile.phone_number }}                    
+                </div>
+            </div>
+            <div class="card bg-dark text-white mt-3">
+                <div class="card-body text-center">
+                    Email: {{ profile.email }}                    
+                </div>
+            </div>
+                      
+        </div>
+        
+    </div>    
+
+    <div class="pt-5 mb-5">
+        <a href="{% url 'bus_list' %}" class="w-100 btn btn-lg btn-primary">Available buses</a>                 
+     </div>
+</div>
+{% endblock %}
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Twisty</title>
+</head>
+<body>
+    <h2>Welcome to Twisty</h2>
+    <h4>A Bus Booking App</h4>
+    <p>Phone Number: {{ profile.phone_number }}</p>
+    <p>Email: {{ profile.email }}</p>
+    <a href="{% url 'logout' %}">Logout</a>
+    <a href="{% url 'bus_list' %}">Available buses</a>
+</body>
+</html> -->
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Twisty</title>
+</head>
+<body>
+    <h2>Welcome to Twisty</h2>
+    <h4>A Bus Booking App</h4>
+    <a href="{% url 'logout' %}">Logout</a>
+    <a href="{% url 'bus_list' %}">Available buses</a>
+</body>
+</html>
+
+
+    
+
+
+
+-->
+
+
+        <!-- {{ form.username|attr:"class:form-control" }}
+        {{ form.email|attr:"class:form-control" }}
+        {{ form.password1|attr:"class:form-control" }}
+        {{ form.password2|attr:"class:form-control" }} -->
+<!-- 
+        <div>
+            <div class="form-floating">
+                {{ form.username|attr:"placeholder:Enter Username" | attr:"class:form-control id:floatingUsername" }}          
+              <label for="floatingUsername">Username</label>
+            </div>
+            <div class="form-floating pt-3">
+                {{ form.email|attr:"placeholder:Email Here" | attr:"class:form-control id:floatingemail" }}          
+              <label for="floatingemail">Email</label>
+            </div>
+
+            <div class="form-floating pt-3">
+                {{ form.phone_number|attr:"placeholder:Enter Phone Number" | attr:"class:form-control id:floatingphone_number" }}          
+              <label for="floatingphone_number">Phone Number</label>
+            </div>
+            <div class="form-floating pt-3">
+                {{ form.password1|attr:"placeholder:Enter password" | attr:"class:form-control id:floatingpassword1" }}          
+              <label for="floatingpassword1">Password</label>
+            </div>
+            <div class="form-floating pt-3">
+                {{ form.password2|attr:"placeholder:Confirm Password" | attr:"class:form-control id:floatingpassword2" }}          
+              <label for="floatingpassword2">Confirm Password</label>
+            </div>
+
+        </div>
+     
+
+                     
+    
+    <div class="pt-5 mb-5">
+          <button class="w-100 btn btn-lg btn-primary" type="submit">
+          Sign Up
+          </button>
+        </div>
+        
+    </form>
+</div>
+ -->
+
+
+

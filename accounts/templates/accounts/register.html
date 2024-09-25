@@ -1,0 +1,79 @@
+<!-- accounts/templates/accounts/register.html -->
+{% extends 'base.html' %}
+
+{% block title %}SignUp{% endblock %}
+
+{% block content %}
+
+{% load widget_tweaks %}
+
+<div class="form-signin">
+    <h2>Register</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- {{ form.username|attr:"class:form-control" }}
+        {{ form.email|attr:"class:form-control" }}
+        {{ form.password1|attr:"class:form-control" }}
+        {{ form.password2|attr:"class:form-control" }} -->
+
+        <div>
+            <div class="form-floating">
+                {{ form.username|attr:"placeholder:Enter Username" | attr:"class:form-control id:floatingUsername" }}          
+              <label for="floatingUsername">Username</label>
+            </div>
+            <div class="form-floating pt-3">
+                {{ form.email|attr:"placeholder:Email Here" | attr:"class:form-control id:floatingemail" }}          
+              <label for="floatingemail">Email</label>
+            </div>
+
+            <div class="form-floating pt-3">
+                {{ form.phone_number|attr:"placeholder:Enter Phone Number" | attr:"class:form-control id:floatingphone_number" }}          
+              <label for="floatingphone_number">Phone Number</label>
+            </div>
+            <div class="form-floating pt-3">
+                {{ form.password1|attr:"placeholder:Enter password" | attr:"class:form-control id:floatingpassword1" }}          
+              <label for="floatingpassword1">Password</label>
+            </div>
+            <div class="form-floating pt-3">
+                {{ form.password2|attr:"placeholder:Confirm Password" | attr:"class:form-control id:floatingpassword2" }}          
+              <label for="floatingpassword2">Confirm Password</label>
+            </div>
+
+        </div>
+
+        
+
+
+       <!--  {% for hidden in form.hidden_fields %}
+                      {{ hidden }}
+                    {% endfor %}
+
+                    {% for field in form.visible_fields %}
+                      <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field|add_class:'form-control' }} -->
+                        <!-- {% render_field form.username class="form-control" %} -->
+                        <!-- {% render_field form.username class="form-control" placeholder=form.username.label %} -->
+                       <!--  {% for error in field.errors %}
+                          <span class="help-block">{{ error }}</span>
+                        {% endfor %}
+                      </div>
+                    {% endfor %} -->
+
+                    <!-- {{ form.username }}
+                        {{ form.email }}
+                        {{ form.as_p }} -->                        
+    
+    <div class="pt-5 mb-5">
+          <button class="w-100 btn btn-lg btn-primary" type="submit">
+          Sign Up
+          </button>
+        </div>
+        
+    </form>
+</div>
+{% endblock %}
+
+
+

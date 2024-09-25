@@ -1,0 +1,43 @@
+<!-- accounts/templates/accounts/edit_profile.html -->
+{% extends 'base.html' %}
+
+{% block title %}Update Profile{% endblock %}
+
+{% block content %}
+
+{% load widget_tweaks %}
+
+<div class="form-signin mb-5 pt-5">
+    <h2 class="pt-5 text-center">Update Profile</h2>
+    <form method="post">
+        {% csrf_token %}
+
+<!-- inplace of the "form.as_p" -->
+        <div class="form-floating pt-3">
+            {{ form.phone_number|attr:"placeholder:Phone Number" | attr:"class:form-control id:textInput" }}
+            <label for="textInput">Phone Number</label>
+        </div>
+
+        <div class="form-floating pt-3">
+            {{ form.email|attr:"placeholder:inputEmail" | attr:"class:form-control id:inputEmail" }}
+            <label for="email">Email</label>
+        </div>
+
+        <!-- {{ form.as_p }} -->
+
+
+        <div class="pt-5 ">
+          <button class="w-100 btn btn-lg btn-primary" type="submit">
+          Save changes
+          </button>
+        </div>
+
+        <div class="pt-3">
+            <a href="{% url 'home' %}" class="w-100 btn btn-lg btn-primary">Back to Home</a>
+        </div>
+        
+    </form>
+    
+</div>
+{% endblock %}
+
