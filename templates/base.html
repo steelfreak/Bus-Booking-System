@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-compatible" content="ie=edge">
+  <title>{% block title %}Twisty{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+  <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+  
+
+  <style>
+    /* Mobile styles */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 250px;
+      background-color: #f8f9fa;
+      transition: transform 0.3s ease;
+      transform: translateX(-100%);
+      z-index: 1040;
+    }
+    .sidebar.show {
+      transform: translateX(0);
+    }
+    .content {
+      margin-left: 0;
+      transition: margin-left 0.3s ease;
+    }
+    .content.shifted {
+      margin-left: 250px;
+    }
+    .navbar-toggler {
+      z-index: 1060;
+    }
+    /* smaller screen styles */
+    @media (max-width: 1024px) {    
+      .top-navbar {
+        display: none; /* Hide sidebar on wide screens */
+      }
+}
+
+    /* Wide screen styles */
+    @media (min-width: 992px) {
+      .sidebar {
+        display: none; /* Hide sidebar on wide screens */
+      }
+      .top-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #f8f9fa;
+        z-index: 1050;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .top-navbar ul {
+        display: flex;
+        justify-content: flex-start;
+        margin: 0;
+        padding: 0.5rem 1rem;
+        list-style: none;
+      }
+      .top-navbar ul li {
+        margin-right: 1rem;
+      }
+      .top-navbar ul li a {
+        text-decoration: none;
+        color: #000; /* Change to your preferred color */
+      }
+      .content {
+        margin-top: 56px; /* Adjust margin to account for top-navbar height */
+      }
+    }
+  </style>
+</head>
+<body>
+  {% if user.is_authenticated %}
+  <!-- Mobile Sidebar Navigation -->
+  <div class="sidebar" id="sidebar">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'home' %}">Home</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'bus_list' %}">Active buses</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'filtered_bookings' %}">Booked Seats</a>
+      </li>
+<!--       <li class="nav-item">
+        <a class="nav-link" href="edit_profile">Profile</a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'edit_profile' %}">Profile</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+
+    </ul>
+  </div>
+
+
+  <!-- Top Navbar for Wide Screens -->
+  <nav class="top-navbar">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'home' %}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'bus_list' %}">Active buses</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'filtered_bookings' %}">Booked Seats</a>
+      </li>
+<!--       <li class="nav-item">
+        <a class="nav-link" href="edit_profile">Profile</a>
+      </li> -->
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'edit_profile' %}">Profile</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+
+    </ul>
+  </nav>
+  {% else %}
+  <!-- Mobile Sidebar Navigation -->
+  <div class="sidebar" id="sidebar">
+    <ul class="nav flex-column">
+      
+      
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">SignIn</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">SignUp</a>
+      </li> 
+    </ul>
+  </div>
+
+
+  <!-- Top Navbar for Wide Screens -->
+  <nav class="top-navbar">
+    <ul class="nav">
+      
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">SignIn</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">SignUp</a>
+      </li>
+    </ul>
+  </nav>
+  {% endif %}
+
+  <!-- Main Content -->
+  <div class="content">
+    <!-- Navbar for Mobile Screens -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <h1 class="navbar-brand ms-3">Twisty</h1>
+      </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-12">
+          	<div class="content">
+              {% block content %}
+              {% endblock %}
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js.map' %}"></script>
+
+
+  <script>
+    document.querySelector('.navbar-toggler').addEventListener('click', function() {
+      const sidebar = document.getElementById('sidebar');
+      const content = document.querySelector('.content');
+      
+      // Toggle the sidebar and content shift
+      if (sidebar.classList.contains('show')) {
+        sidebar.classList.remove('show');
+        content.classList.remove('shifted');
+      } else {
+        sidebar.classList.add('show');
+        content.classList.add('shifted');
+      }
+    });
+  </script>
+</body>
+</html>
