@@ -1,0 +1,187 @@
+Integrating MoMo (Mobile Money) payments into your Django application involves using an API provided by a MoMo payment gateway service. MoMo is popular in regions like West Africa, and integration typically involves interacting with APIs from service providers like MTN MoMo, Orange Money, or others.
+
+Here’s a general guide on how to integrate MoMo payments into your Django application:
+
+### 1. Choose a MoMo Payment Gateway Provider
+
+You'll need to select a MoMo payment gateway provider. For this example, I'll assume you are using MTN MoMo, but the general principles apply to other providers as well.
+
+### 2. Register and Obtain API Credentials
+
+1. **Register** with the MoMo payment provider to obtain API credentials (Client Key, Client Secret, and other required details).
+2. **Obtain API documentation** from the provider. This documentation will guide you on how to use their API for payments, requests, and responses.
+
+### 3. Install Required Packages
+
+If the MoMo payment provider has a specific SDK or library, install it. Otherwise, you can use Python's `requests` library to interact with the API.
+
+```bash
+pip install requests
+```
+
+### 4. Configure Your Django Settings
+
+Add MoMo credentials to your Django settings:
+
+#### `settings.py`
+
+```python
+# MoMo API credentials (Example)
+MOMO_API_BASE_URL = 'https://sandbox.momodeveloper.mtn.com'  # or production URL
+MOMO_API_KEY = 'your_api_key'
+MOMO_API_SECRET = 'your_api_secret'
+MOMO_PARTNER_ID = 'your_partner_id'
+MOMO_PARTNER_SECRET = 'your_partner_secret'
+MOMO_PHONE_NUMBER = 'your_phone_number'
+```
+
+### 5. Create Payment Integration Functions
+
+You need to create functions to interact with the MoMo API. Below is an example of how to make a payment request and check payment status using the `requests` library.
+
+#### `payment/utils.py`
+
+```python
+import requests
+from django.conf import settings
+import base64
+
+def get_auth_token():
+    """Get MoMo API authorization token."""
+    url = f"{settings.MOMO_API_BASE_URL}/v1_0/apiuser/token/"
+    headers = {
+        'Authorization': f'Basic {base64.b64encode(f"{settings.MOMO_PARTNER_ID}:{settings.MOMO_PARTNER_SECRET}".encode()).decode()}',
+        'Content-Type': 'application/json'
+    }
+    response = requests.post(url, headers=headers)
+    response.raise_for_status()
+    return response.json().get('access_token')
+
+def initiate_payment(amount, phone_number, transaction_id):
+    """Initiate a MoMo payment request."""
+    url = f"{settings.MOMO_API_BASE_URL}/v1_0/collection/req"
+    headers = {
+        'Authorization': f'Bearer {get_auth_token()}',
+        'Content-Type': 'application/json',
+        'X-Reference-Id': transaction_id,
+        'X-Target-Environment': 'sandbox'  # or 'production'
+    }
+    payload = {
+        "amount": amount,
+        "currency": "EUR",
+        "externalId": transaction_id,
+        "payerMessage": "Payment for Order",
+        "payeeMessage": "Payment received"
+    }
+    response = requests.post(url, json=payload, headers=headers)
+    response.raise_for_status()
+    return response.json()
+
+def check_payment_status(transaction_id):
+    """Check the status of a MoMo payment request."""
+    url = f"{settings.MOMO_API_BASE_URL}/v1_0/collection/v1_0/request/{transaction_id}"
+    headers = {
+        'Authorization': f'Bearer {get_auth_token()}',
+        'Content-Type': 'application/json',
+        'X-Reference-Id': transaction_id
+    }
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    return response.json()
+```
+
+### 6. Create Views to Handle Payments
+
+Create views to initiate payments and handle callbacks or status checks.
+
+#### `payment/views.py`
+
+```python
+from django.shortcuts import render, redirect
+from django.conf import settings
+from .utils import initiate_payment, check_payment_status
+
+def initiate_payment_view(request):
+    if request.method == 'POST':
+        amount = request.POST.get('amount')
+        phone_number = request.POST.get('phone_number')
+        transaction_id = 'unique_transaction_id'  # Generate or use a unique ID
+
+        response = initiate_payment(amount, phone_number, transaction_id)
+        # Handle response (e.g., redirect user to MoMo payment page)
+        return render(request, 'payment/payment_status.html', {'response': response})
+
+    return render(request, 'payment/initiate_payment.html')
+
+def check_payment_status_view(request, transaction_id):
+    status = check_payment_status(transaction_id)
+    return render(request, 'payment/payment_status.html', {'status': status})
+```
+
+### 7. Create Templates
+
+Create HTML templates for initiating payments and displaying payment status.
+
+#### `payment/templates/payment/initiate_payment.html`
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Initiate Payment</title>
+</head>
+<body>
+    <h1>Initiate Payment</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount" required><br>
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="phone_number" required><br>
+        <button type="submit">Pay</button>
+    </form>
+</body>
+</html>
+```
+
+#### `payment/templates/payment/payment_status.html`
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Status</title>
+</head>
+<body>
+    <h1>Payment Status</h1>
+    <p>Status: {{ status }}</p>
+    <!-- Optionally, add more information based on the response -->
+</body>
+</html>
+```
+
+### 8. Configure URLs
+
+Add URL patterns for the payment views.
+
+#### `payment/urls.py`
+
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('initiate/', views.initiate_payment_view, name='initiate_payment'),
+    path('status/<str:transaction_id>/', views.check_payment_status_view, name='check_payment_status'),
+]
+```
+
+### Summary
+
+1. **Obtain MoMo API credentials** from your payment gateway provider.
+2. **Install required packages** and configure your Django settings.
+3. **Create functions** to interact with the MoMo API for payment initiation and status checking.
+4. **Build views and templates** to handle payment requests and display statuses.
+5. **Add URL patterns** to route requests to your payment views.
+
+This setup provides a basic integration with MoMo payments in a Django application. Make sure to consult the documentation of your specific MoMo provider for more detailed information and additional features.
