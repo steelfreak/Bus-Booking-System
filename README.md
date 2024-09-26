@@ -25,8 +25,8 @@ The **Bus Booking System** is a web-based application developed using Django tha
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/bus-booking-system.git
-   gh repo clone steelfreak/Bus-Booking-System
+   git clone https://github.com/steelfreak/Bus-Booking-System.git
+   
    ```
    GitHub CLI
    ```bash
@@ -82,3 +82,5 @@ This project is licensed under the MIT License.
 ---
 
 Feel free to adjust any sections to better suit your project details!
+All the best i remain Steelfreak (Kinen Key Samson) 
+Happy Coding...!!!
