@@ -23,6 +23,22 @@ The **Bus Booking System** is a web-based application developed using Django tha
 
 ### Tech Stack
 
+/bus-booking-system
+│
+├── Transport booking App pics
+│   └── homepage.PNG
+|   └── look for booked seats based on date, time and bus numberplate.PNG
+│   └── signin.PNG
+|   └── signup.PNG
+│   └── succesful page.PNG
+|   └── update profile.PNG
+│   └── choose route and time.PNG
+|   └── book a seat.PNG
+|   └── bus.jpg
+│
+└── README.md
+
+
 - **Click**: On the links below to Open the pictures wider
   
 <img src="Transport booking App pics/homepage.PNG" alt="Bus" width="300"/>
@@ -34,6 +50,11 @@ The **Bus Booking System** is a web-based application developed using Django tha
 <img src="Transport booking App pics/choose route and time.PNG" alt="Bus" width="300"/>
 <img src="Transport booking App pics/book a seat.PNG" alt="Bus" width="300"/>
 <img src="Transport booking App pics/Responsiveness.mp4" alt="Bus" width="300"/>
+<video width="640" height="480" controls>
+    <source src="Transport booking App pics/Responsiveness.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
 
 
 ### Installation
