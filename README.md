@@ -42,14 +42,15 @@ The **Bus Booking System** is a web-based application developed using Django tha
 - **Click**: On the links below to Open the pictures wider
   
 <img src="Transport booking App pics/homepage.PNG" alt="Bus" width="900"/>
-<img src="Transport booking App pics/look for booked seats based on date, time and bus numberplate.PNG" alt="Bus" width="300"/>
-<img src="Transport booking App pics/signin.PNG" alt="Bus" width="300"/>
-<img src="Transport booking App pics/signup.PNG" alt="Bus" width="300"/>
-<img src="Transport booking App pics/succesful page.PNG" alt="Bus" width="300"/>
-<img src="Transport booking App pics/update profile.PNG" alt="Bus" width="300"/>
-<img src="Transport booking App pics/choose route and time.PNG" alt="Bus" width="300"/>
-<img src="Transport booking App pics/book a seat.PNG" alt="Bus" width="300"/>
-<img src="Transport booking App pics/Responsiveness.mp4" alt="Bus" width="300"/>
+<img src="Transport booking App pics/look for booked seats based on date, time and bus numberplate.PNG" alt="Bus" width="900"/>
+<img src="Transport booking App pics/signin.PNG" alt="Bus" width="900"/>
+<img src="Transport booking App pics/signup.PNG" alt="Bus" width="900"/>
+<img src="Transport booking App pics/succesful page.PNG" alt="Bus" width="900"/>
+<img src="Transport booking App pics/update profile.PNG" alt="Bus" width="900"/>
+<img src="Transport booking App pics/choose route and time.PNG" alt="Bus" width="900"/>
+<img src="Transport booking App pics/book a seat.PNG" alt="Bus" width="900"/>
+<img src="Transport booking App pics/Responsiveness.mp4" alt="Bus" width="900"/>
+
 <video width="640" height="480" controls>
     <source src="Transport booking App pics/Responsiveness.mp4" type="video/mp4">
     Your browser does not support the video tag.
