@@ -1,6 +1,3 @@
-# Bus-Booking-System
-A basic baus booking system
-
 # Bus Booking System
 
 ## Project Description
@@ -19,7 +16,7 @@ The **Bus Booking System** is a web-based application developed using Django tha
 
 ### Tech Stack
 
-- **Frontend**: HTML, CSS, JavaScript
+- **Frontend**: HTML and CSS
 - **Backend**: Django (Python)
 - **Database**: PostgreSQL (or SQLite for development)
 - **Payment Integration**: MOMO API
@@ -29,30 +26,43 @@ The **Bus Booking System** is a web-based application developed using Django tha
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/bus-booking-system.git
+   gh repo clone steelfreak/Bus-Booking-System
    ```
-2. Navigate to the project directory:
+   GitHub CLI
+   ```bash
+   gh repo clone steelfreak/Bus-Booking-System
+   ```
+   SSH
+   ```bash
+   git@github.com:steelfreak/Bus-Booking-System.git
+   ```
+   HTTPS
+   ```bash
+   https://github.com/steelfreak/Bus-Booking-System.git
+   ```
+3. Navigate to the project directory:
    ```bash
    cd bus-booking-system
    ```
-3. Create a virtual environment and activate it:
+4. Create a virtual environment and activate it:
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
    ```
-4. Install dependencies:
+5. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-5. Set up environment variables for MOMO API and database settings in a `.env` file:
+6. Set up environment variables for MOMO API and database settings in a `.env` file:
    - `MOMO_API_KEY`
    - `MOMO_SECRET`
    - Database configurations
 
-6. Run database migrations:
+7. Run database migrations:
    ```bash
    python manage.py migrate
    ```
-7. Start the development server:
+8. Start the development server:
    ```bash
    python manage.py runserver
    ```
