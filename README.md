@@ -42,7 +42,7 @@ The **Bus Booking System** is a web-based application developed using Django tha
    ```
 3. Navigate to the project directory:
    ```bash
-   cd bus-booking-system
+   cd Bus-Booking-System
    ```
 4. Create a virtual environment and activate it:
    ```bash
@@ -82,5 +82,8 @@ This project is licensed under the MIT License.
 ---
 
 Feel free to adjust any sections to better suit your project details!
+
+---
+___
 All the best i remain Steelfreak (Kinen Key Samson) 
 Happy Coding...!!!
