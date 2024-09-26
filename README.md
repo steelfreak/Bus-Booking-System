@@ -69,7 +69,7 @@ The **Bus Booking System** is a web-based application developed using Django tha
 
 ### API Documentation
 
-For details on how to use the MOMO Pay API, please refer to the [MOMO API documentation](https://momoapi.com/docs).
+For details on how to use the MOMO Pay API, please refer to the [MOMO API documentation](https://momodeveloper.mtn.com/api-documentation).
 
 ### Contributing
 
@@ -85,5 +85,8 @@ Feel free to adjust any sections to better suit your project details!
 
 ---
 ___
-All the best i remain Steelfreak (Kinen Key Samson) 
+All the best 
+--
+I remain Steelfreak (Kinen Key Samson) 
+----
 Happy Coding...!!!
