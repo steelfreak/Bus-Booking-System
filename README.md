@@ -26,6 +26,8 @@ The **Bus Booking System** is a web-based application developed using Django tha
 - **Frontend**: HTML and CSS
   
 ![homepage](Transport booking App pics/homepage.PNG)
+<img src="Transport booking App pics/homepage.PNG" alt="Bus" width="300"/>
+
 
 
 ### Installation
