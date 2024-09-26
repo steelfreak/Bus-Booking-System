@@ -104,4 +104,4 @@ Feel free to customize this documentation based on your specific project needs a
 
 ---
 
-For More info contact me via WhatsApp: +256 783 338952
+For More info contact me *Steelfreak* (Kinen Key Samson) via Email: kinenkey@gmail.com Or WhatsApp: +256 783 338952
