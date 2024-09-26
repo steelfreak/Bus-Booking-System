@@ -21,6 +21,13 @@ The **Bus Booking System** is a web-based application developed using Django tha
 - **Database**: PostgreSQL (or SQLite for development)
 - **Payment Integration**: MOMO API
 
+### Tech Stack
+
+- **Frontend**: HTML and CSS
+  
+![homepage](Bus-Booking-System/Transport booking App pics/homepage.PNG)
+
+
 ### Installation
 
 1. Clone the repository:
